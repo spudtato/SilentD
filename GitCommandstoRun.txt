@@ -1,2 +1,2 @@
 git update-index --skip-worktree .vscode/settings.json
-git update-index --skip-worktree VulnDash/settings.py
+git update-index --skip-worktree Pterodactyl/settings.py
