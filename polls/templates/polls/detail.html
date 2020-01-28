@@ -1,10 +1,10 @@
-<h1>{{ question.question_text }}</h1>
+<h1>{{ questions.question_text }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'polls:vote' question.id %}" method="post">
+<form action="{% url 'polls:vote' questions.id %}" method="post">
     {% csrf_token %}
-    {% for answers in question.answers_set.all %}
+    {% for answers in questions.answers_set.all %}
         <input type="radio" name="answers" id="answers{{ forloop.counter }}" value="{{ answers.id }}">
         <label for="answers{{ forloop.counter }}">{{ answers.answers_set }}</label><br>
     {% endfor %}
