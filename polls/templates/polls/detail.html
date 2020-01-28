@@ -1,6 +1,12 @@
 <h1>{{ question.question_text }}</h1>
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
-{% endfor %}
-</ul>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for answers in question.answers_set.all %}
+        <input type="radio" name="answers" id="answers{{ forloop.counter }}" value="{{ answers.id }}">
+        <label for="answers{{ forloop.counter }}">{{ answers.answers_set }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+</form>

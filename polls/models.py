@@ -16,8 +16,9 @@ class Questions(models.Model):
 
 class Answers(models.Model):
     def __str__(self):
-        return self.choice_test
+        return self.answers_set
+        
     question = models.ForeignKey(Questions,on_delete=models.CASCADE)
-    choice_test = models.CharField(max_length=250)
+    answers_set = models.CharField(max_length=250)
     votes = models.IntegerField(default=0)
 
